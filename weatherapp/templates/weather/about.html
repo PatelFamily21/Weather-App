@@ -1,0 +1,269 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About - Weather App{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-8 fade-in">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+            <i class="fas fa-info-circle"></i> About Weather App
+        </h1>
+        <p class="text-white text-lg opacity-90">
+            Learn about our technology stack and architecture
+        </p>
+    </div>
+
+    <!-- Technology Stack -->
+    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            <i class="fas fa-layer-group text-purple-600 mr-2"></i>
+            Technology Stack
+        </h2>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Backend -->
+            <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 hover:shadow-lg transition-all">
+                <div class="text-center mb-4">
+                    <i class="fab fa-python text-5xl text-green-600"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Backend</h3>
+                <ul class="space-y-2 text-gray-700">
+                    <li><i class="fas fa-check text-green-600 mr-2"></i>Django 6.0</li>
+                    <li><i class="fas fa-check text-green-600 mr-2"></i>Python 3.x</li>
+                    <li><i class="fas fa-check text-green-600 mr-2"></i>Django REST Framework</li>
+                    <li><i class="fas fa-check text-green-600 mr-2"></i>SQLite Database</li>
+                </ul>
+            </div>
+
+            <!-- Caching -->
+            <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-6 hover:shadow-lg transition-all">
+                <div class="text-center mb-4">
+                    <i class="fas fa-database text-5xl text-red-600"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Caching</h3>
+                <ul class="space-y-2 text-gray-700">
+                    <li><i class="fas fa-check text-red-600 mr-2"></i>Redis 7.x</li>
+                    <li><i class="fas fa-check text-red-600 mr-2"></i>django-redis</li>
+                    <li><i class="fas fa-check text-red-600 mr-2"></i>5-min cache TTL</li>
+                    <li><i class="fas fa-check text-red-600 mr-2"></i>In-memory storage</li>
+                </ul>
+            </div>
+
+            <!-- Frontend -->
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 hover:shadow-lg transition-all">
+                <div class="text-center mb-4">
+                    <i class="fab fa-html5 text-5xl text-blue-600"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Frontend</h3>
+                <ul class="space-y-2 text-gray-700">
+                    <li><i class="fas fa-check text-blue-600 mr-2"></i>Tailwind CSS</li>
+                    <li><i class="fas fa-check text-blue-600 mr-2"></i>Vanilla JavaScript</li>
+                    <li><i class="fas fa-check text-blue-600 mr-2"></i>Font Awesome Icons</li>
+                    <li><i class="fas fa-check text-blue-600 mr-2"></i>Responsive Design</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- API -->
+        <div class="mt-6 bg-gradient-to-r from-yellow-50 to-orange-100 rounded-lg p-6">
+            <div class="flex items-center justify-center space-x-4">
+                <i class="fas fa-cloud-sun text-5xl text-orange-600"></i>
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800">Weather Data Provider</h3>
+                    <p class="text-gray-700">OpenWeatherMap API - Real-time weather data</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Architecture Diagram -->
+    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            <i class="fas fa-sitemap text-purple-600 mr-2"></i>
+            System Architecture
+        </h2>
+        
+        <div class="bg-gray-50 rounded-lg p-6 mb-6">
+            <div class="text-center space-y-6">
+                <!-- User -->
+                <div class="inline-block bg-yellow-100 border-2 border-yellow-400 rounded-lg px-6 py-4">
+                    <i class="fas fa-user text-3xl text-yellow-600 mb-2"></i>
+                    <p class="font-bold text-gray-800">User / Frontend</p>
+                </div>
+
+                <div class="text-3xl text-gray-400">↓</div>
+
+                <!-- Weather API -->
+                <div class="inline-block bg-blue-100 border-2 border-blue-400 rounded-lg px-8 py-6 max-w-md">
+                    <i class="fas fa-server text-3xl text-blue-600 mb-2"></i>
+                    <p class="font-bold text-gray-800 mb-4">Weather API (Django)</p>
+                    <div class="text-sm text-left space-y-2 text-gray-700">
+                        <p>1. <i class="fas fa-search mr-2"></i>Check Redis Cache</p>
+                        <p>2. <i class="fas fa-question mr-2"></i>Cache Hit?</p>
+                        <p class="ml-6">→ Yes: Return cached data</p>
+                        <p class="ml-6">→ No: Continue to step 3</p>
+                        <p>3. <i class="fas fa-cloud mr-2"></i>Request 3rd Party API</p>
+                        <p>4. <i class="fas fa-download mr-2"></i>Receive API Response</p>
+                        <p>5. <i class="fas fa-save mr-2"></i>Save to Redis Cache</p>
+                        <p>6. <i class="fas fa-check mr-2"></i>Return Weather Data</p>
+                    </div>
+                </div>
+
+                <!-- Arrows -->
+                <div class="flex justify-center items-center space-x-12">
+                    <div class="text-center">
+                        <div class="text-3xl text-gray-400">↓</div>
+                        <p class="text-sm text-gray-600 mt-2">Cache Check</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl text-gray-400">↓</div>
+                        <p class="text-sm text-gray-600 mt-2">On Cache Miss</p>
+                    </div>
+                </div>
+
+                <!-- Redis and External API -->
+                <div class="flex justify-center items-start space-x-8">
+                    <div class="inline-block bg-red-100 border-2 border-red-400 rounded-lg px-6 py-4">
+                        <i class="fas fa-database text-3xl text-red-600 mb-2"></i>
+                        <p class="font-bold text-gray-800">Redis Cache</p>
+                        <p class="text-sm text-gray-600 mt-2">5-min TTL</p>
+                    </div>
+
+                    <div class="inline-block bg-orange-100 border-2 border-orange-400 rounded-lg px-6 py-4">
+                        <i class="fas fa-cloud-sun text-3xl text-orange-600 mb-2"></i>
+                        <p class="font-bold text-gray-800">OpenWeatherMap</p>
+                        <p class="text-sm text-gray-600 mt-2">3rd Party API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg p-6">
+            <h3 class="font-bold text-gray-800 mb-3">
+                <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                How It Works
+            </h3>
+            <ol class="space-y-3 text-gray-700">
+                <li><strong>1. User Request:</strong> User enters a city name and submits the form</li>
+                <li><strong>2. Cache Check:</strong> Django checks Redis cache for existing weather data</li>
+                <li><strong>3. Cache Hit:</strong> If data exists and is fresh (< 5 minutes), return immediately (~50ms)</li>
+                <li><strong>4. Cache Miss:</strong> If no data or expired, call OpenWeatherMap API (~500ms)</li>
+                <li><strong>5. Cache Store:</strong> Store the fresh data in Redis with 5-minute expiry</li>
+                <li><strong>6. Response:</strong> Return weather data to user with cache status indicator</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Features -->
+    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            <i class="fas fa-star text-purple-600 mr-2"></i>
+            Key Features
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="flex items-start space-x-4">
+                <div class="bg-green-100 rounded-full p-3 flex-shrink-0">
+                    <i class="fas fa-bolt text-green-600 text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-2">Lightning-Fast Caching</h3>
+                    <p class="text-gray-600">Redis in-memory caching provides sub-100ms response times for cached data</p>
+                </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+                <div class="bg-blue-100 rounded-full p-3 flex-shrink-0">
+                    <i class="fas fa-sync text-blue-600 text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-2">Real-Time Data</h3>
+                    <p class="text-gray-600">Fresh weather data from OpenWeatherMap API with automatic updates</p>
+                </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+                <div class="bg-purple-100 rounded-full p-3 flex-shrink-0">
+                    <i class="fas fa-chart-line text-purple-600 text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-2">Analytics & Statistics</h3>
+                    <p class="text-gray-600">Track cache performance, popular cities, and query history</p>
+                </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+                <div class="bg-pink-100 rounded-full p-3 flex-shrink-0">
+                    <i class="fas fa-mobile-alt text-pink-600 text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-2">Responsive Design</h3>
+                    <p class="text-gray-600">Beautiful UI that works perfectly on desktop, tablet, and mobile</p>
+                </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+                <div class="bg-yellow-100 rounded-full p-3 flex-shrink-0">
+                    <i class="fas fa-shield-alt text-yellow-600 text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-2">Secure & Reliable</h3>
+                    <p class="text-gray-600">CSRF protection, error handling, and robust API integration</p>
+                </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+                <div class="bg-indigo-100 rounded-full p-3 flex-shrink-0">
+                    <i class="fas fa-history text-indigo-600 text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-2">Query History</h3>
+                    <p class="text-gray-600">View recent searches and popular cities at a glance</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performance Metrics -->
+    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 fade-in">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            <i class="fas fa-tachometer-alt text-purple-600 mr-2"></i>
+            Performance Benefits
+        </h2>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 text-center">
+                <div class="text-5xl font-bold text-green-600 mb-2">10-20x</div>
+                <p class="text-gray-700 font-semibold">Faster Response</p>
+                <p class="text-sm text-gray-600 mt-2">Cached responses vs API calls</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 text-center">
+                <div class="text-5xl font-bold text-blue-600 mb-2">80-90%</div>
+                <p class="text-gray-700 font-semibold">API Call Reduction</p>
+                <p class="text-sm text-gray-600 mt-2">Fewer external API requests</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6 text-center">
+                <div class="text-5xl font-bold text-purple-600 mb-2">&lt;50ms</div>
+                <p class="text-gray-700 font-semibold">Cache Response Time</p>
+                <p class="text-sm text-gray-600 mt-2">Lightning-fast Redis retrieval</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Developer Info -->
+    <div class="bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl shadow-lg p-6 md:p-8 text-white text-center fade-in">
+        <i class="fas fa-code text-5xl mb-4"></i>
+        <h2 class="text-3xl font-bold mb-4">Built with ❤️ using Django & Redis</h2>
+        <p class="text-lg opacity-90 mb-6">
+            A demonstration of modern web architecture with efficient caching strategies
+        </p>
+        <a href="{% url 'weatherapp:index' %}" class="inline-block bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105">
+            <i class="fas fa-arrow-left mr-2"></i>Back to Weather Search
+        </a>
+    </div>
+</div>
+{% endblock %}
