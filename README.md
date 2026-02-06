@@ -20,23 +20,6 @@ A modern, high-performance weather application built with Django, Redis caching,
 - 📈 **Performance Metrics** - Monitor cache hit rates and response times
 - 🌍 **Global Coverage** - Search weather for cities worldwide
 
-## 🚀 Live Demo
-
-[Live Demo Link] _(Add your deployed app URL here)_
-
-## 📸 Screenshots
-
-### Main Search Interface
-Beautiful gradient interface with search functionality
-![Main Interface](./images/Screenshot_2026-02-03_20-26-41.png)
-
-### Weather Display
-Detailed weather information with cache status
-![Weather Display](https://via.placeholder.com/600x400)
-
-### Statistics Dashboard
-Analytics and performance metrics
-![Statistics](https://via.placeholder.com/600x400)
 
 ## 🏗️ Architecture
 
