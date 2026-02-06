@@ -90,6 +90,13 @@ document.addEventListener('DOMContentLoaded', function() {
             responseTimeBadge.classList.add('hidden');
         }
 
+        const locationBadge = document.getElementById('locationBadge');
+        if (locationBadge && data.location_detected) {
+            locationBadge.classList.remove('hidden');
+        } else if (locationBadge) {
+        locationBadge.classList.add('hidden');
+        }
+
         // Update main weather information
         document.getElementById('cityName').textContent = `${data.city}, ${data.country}`;
         document.getElementById('weatherDesc').textContent = data.description;
@@ -137,6 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Smooth scroll to results
         weatherResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
     }
 
     /**
@@ -241,3 +249,19 @@ function getWeatherEmoji(icon) {
     };
     return iconMap[icon] || '🌤️';
 }
+
+/*
+// Update displayWeather function to handle location badge
+function displayWeather(data) {
+    // ... existing code ...
+    
+    // NEW: Show location badge if detected from GPS
+    const locationBadge = document.getElementById('locationBadge');
+    if (locationBadge && data.location_detected) {
+        locationBadge.classList.remove('hidden');
+    } else if (locationBadge) {
+        locationBadge.classList.add('hidden');
+    }
+    
+    // ... rest of existing code ...
+} */

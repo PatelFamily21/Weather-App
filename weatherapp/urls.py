@@ -19,4 +19,11 @@ urlpatterns = [
     # Additional pages
     path('about/', views.about, name='about'),
     path('stats/', views.stats_page, name='stats_page'),
+
+    path('api/weather/coordinates/', views.get_weather_by_coordinates_enhanced, name='weather_by_coordinates'),
+    path('api/geocode/reverse/', views.reverse_geocode_enhanced, name='reverse_geocode'),
+    path('api/geocode/search/', views.search_cities, name='search_cities'),
+
+    # New Endpoint
+    path('api/geocode/nearby/', views.get_nearby_cities, name='get_nearby_cities'),
 ]
